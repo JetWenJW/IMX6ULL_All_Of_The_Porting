@@ -11,4 +11,4 @@ mount -t devpts devpts /dev/pts
 echo /sbin/mdev > /proc/sys/kernel/hotplug
 mdev -s
 
-./hello &
+#./hello &
