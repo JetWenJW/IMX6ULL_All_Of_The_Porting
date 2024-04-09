@@ -95,7 +95,7 @@
 		codec-master;
 		gpr = <&gpr 4 0x100000 0x100000>;
 		/*
-                 * hp-det = <hp-det-pin hp-det-polarity>;
+         * hp-det = <hp-det-pin hp-det-polarity>;
 		 * hp-det-pin: JD1 JD2  or JD3
 		 * hp-det-polarity = 0: hp detect high for headphone
 		 * hp-det-polarity = 1: hp detect high for speaker
@@ -146,11 +146,12 @@
 		};
 	};
 
-	/* Create by JetWen, Date : 2024/4/8 
+	/* 
+	 * Create by JetWen, 
+	 * Date : 2024/4/8 
 	 * Add LED Device Node
 	 */
-	alphaled
-	{
+	alphaled{
 		#address-cells = <1>;
 		#size-cells = <1>;
 		compatible = "JetWen,alphaled";
@@ -168,12 +169,24 @@
 	 * Date : 2024/4/8 
 	 * Add GPIO_LED Device Node
 	 */
-	gpioled
-	{
+	gpioled{
 		compatible = "JetWen,gpioled";
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_gpioled>;
 		led-gpios = <&gpio1 3 GPIO_ACTIVE_LOW>;
+		status = "okay";
+	};
+
+	/* 
+	 * Create by JetWen, 
+	 * Date : 2024/4/8 
+	 * Add GPIO_BEEP Device Node
+	 */
+	beep{
+		compatible = "JetWen,beep";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_beep>;
+		beep-gpios = <&gpio5 1 GPIO_ACTIVE_HIGH>;
 		status = "okay";
 	};
 };
@@ -329,9 +342,20 @@
 		 * Date:2024/4/9
 		 * Purpose:In order to use Led via GPIO Output 
 		 */
-		pinctrl_gpioled: lcdifresetgrp {
+		pinctrl_gpioled: ledgrp {
 			fsl,pins = <
 				MUX6UL_PAD_GPIO1_IO03__GPIO1_IO03	0x10B0 /* Set Pin GPIO1_IO03 as GPIO1_IO03 */
+			>;
+		};
+
+		/*
+		 * Create By JetWen 
+		 * Date:2024/4/9
+		 * Purpose:In order to use BEEP via GPIO Output 
+		 */
+		pinctrl_beep: beepgrp {
+			fsl,pins = <
+				MX6ULL_PAD_SNVS_TAMPER1__GPIO5_IO01	0x10B0 /* Set Pin GPIO1_IO03 as GPIO1_IO03 */
 			>;
 		};
 
