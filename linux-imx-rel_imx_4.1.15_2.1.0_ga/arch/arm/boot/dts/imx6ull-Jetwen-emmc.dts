@@ -161,7 +161,21 @@
 				0x0209C000 0x04		/* GPIO1_DR_BASE		   */
 				0x0209C004 0x04		/* GPIO1_GDIR			   */
 			>;			
-	}
+	};
+	
+	/* 
+	 * Create by JetWen, 
+	 * Date : 2024/4/8 
+	 * Add GPIO_LED Device Node
+	 */
+	gpioled
+	{
+		compatible = "JetWen,gpioled";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_gpioled>;
+		led-gpios = <&gpio1 3 GPIO_ACTIVE_LOW>;
+		status = "okay";
+	};
 };
 
 &cpu0 {
@@ -307,6 +321,17 @@
 				MX6UL_PAD_UART1_RTS_B__GPIO1_IO19	0x17059 /* SD1 CD */
 				MX6UL_PAD_GPIO1_IO05__USDHC1_VSELECT	0x17059 /* SD1 VSELECT */
 				MX6UL_PAD_GPIO1_IO09__GPIO1_IO09        0x17059 /* SD1 RESET */
+			>;
+		};
+
+		/*
+		 * Create By JetWen 
+		 * Date:2024/4/9
+		 * Purpose:In order to use Led via GPIO Output 
+		 */
+		pinctrl_gpioled: lcdifresetgrp {
+			fsl,pins = <
+				MUX6UL_PAD_GPIO1_IO03__GPIO1_IO03	0x10B0 /* Set Pin GPIO1_IO03 as GPIO1_IO03 */
 			>;
 		};
 
