@@ -194,6 +194,8 @@
 	 * Create by JetWen, 
 	 * Date : 2024/4/10 
 	 * Add GPIO_KEY Device Node
+	 * Date : 2024/4/13
+	 * Purpose : Add Interrupt to key Node
 	 */
 	key{
 		compatible = "JetWen,key";
@@ -201,6 +203,8 @@
 		pinctrl-0 = <&pinctrl_key>;
 		beep-gpios = <&gpio1 18 GPIO_ACTIVE_HIGH>;
 		status = "okay";
+		interrupt-parent = <&gpio1>;			/* Add Parent Node of Interrupt */ 
+		interrupts = <18 IRQ_TYPE_EDGE_BOTH>;	/* < Pin Edge_Trigger> */
 	};
 };
 
