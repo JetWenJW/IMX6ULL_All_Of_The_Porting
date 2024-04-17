@@ -201,10 +201,31 @@
 		compatible = "JetWen,key";
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_key>;
-		beep-gpios = <&gpio1 18 GPIO_ACTIVE_HIGH>;
+		key-gpios = <&gpio1 18 GPIO_ACTIVE_LOW>;
 		status = "okay";
 		interrupt-parent = <&gpio1>;			/* Add Parent Node of Interrupt */ 
 		interrupts = <18 IRQ_TYPE_EDGE_BOTH>;	/* < Pin Edge_Trigger> */
+	};
+	/* 
+	 * Create by JetWen, 
+	 * Date : 2024/4/18 
+	 * Add GPIO_KEY Device Node
+	 * Date : 2024/4/18
+	 * Purpose : Add INPUT Device gpio_Keys Node
+	 * In order to Trigger KEY via Device Tree
+	 */
+	gpio_keys{
+		compatible = "gpio-keys";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		autorepeat;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_key>;
+		key0{
+			label = "GPIO KEY Enter";
+			linux,code = <KEY_ENTER>;
+			gpios = <&gpio1 18 GPIO_ACTIVE_LOW>;
+		};
 	};
 };
 
