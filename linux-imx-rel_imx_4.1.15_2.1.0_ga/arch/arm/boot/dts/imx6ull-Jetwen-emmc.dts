@@ -313,19 +313,17 @@
 	pinctrl-0 = <&pinctrl_i2c1>;
 	status = "okay";
 
-	mag3110@0e {
-		compatible = "fsl,mag3110";
-		reg = <0x0e>;
-		position = <2>;
-	};
-
-	fxls8471@1e {
-		compatible = "fsl,fxls8471";
-		reg = <0x1e>;
-		position = <0>;
-		interrupt-parent = <&gpio5>;
-		interrupts = <0 8>;
-	};
+	/*
+	 * Create By JetWen 
+	 * Date:2024/4/19
+	 * Purpose:In order to use AP3216C via I2C
+	 * add ap3216c into I2C sub-node of Device Tree 
+	 * Note : I2C use 7-bits of aslave address
+	 */
+	ap3216c@1e{
+		compatible = "JetWen,ap3216c";
+		reg = <0x01>
+	}
 };
 
 &i2c2 {
