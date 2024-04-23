@@ -341,6 +341,7 @@
 	 */
 	ft5426:ft5426@38 {
 		compatible = "edt,edt-ft5426";
+		reg = <0x38>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_tsc
 					&pinctrl_tsc_reset>;
@@ -781,19 +782,18 @@
                                 MX6ULL_PAD_SNVS_TAMPER4__GPIO5_IO04   0x17059
                         >;
                 };
+			   /*
+				* Created by JetWen
+				* Date : 2024/4/23
+				* Purpose : Create Sub-Node MT RST
+				* Because We Use tftLCD
+				*/
+				pinctrl_tsc_reset: tsc_reset {
+						fsl,pins = <
+							MX6ULL_PAD_SNVS_TAMPER9__GPIO5_IO09		0x10B0
+						>;
+					};
         };
-
-		/*
-		 * Created by JetWen
-		 * Date : 2024/4/23
-		 * Purpose : Create Sub-Node MT RST
-		 * Because We Use tftLCD
-		 */
-		pinctrl_tsc_reset: tsc_reset {
-			fsl,pins = <
-				MX6ULL_PAD_SNVS_TAMPER9__GPIO5_IO09		0x10B0
-			>;
-		};
 };
 
 
