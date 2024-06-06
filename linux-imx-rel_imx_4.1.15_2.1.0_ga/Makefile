@@ -252,7 +252,7 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/x86/ -e s/x86_64/x86/ \
 #ARCH		?= $(SUBARCH)
 #CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
 ARCH ?= arm
-CROSS_COMPILE ?= arm-linux-gnueabihf-
+CROSS_COMPILE ?= /home/jet/Downloads/gccToolchain_7.7.5/bin/arm-linux-gnueabihf-
 
 
 # Architecture as present in compile.h

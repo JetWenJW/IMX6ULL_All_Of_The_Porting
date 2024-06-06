@@ -162,7 +162,7 @@ export srctree objtree VPATH TOPDIR
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 
 #CROSS_COMPILE ?=
-CROSS_COMPILE ?= /usr/arm/gcc-linaro-14.0.0-2023.06-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+CROSS_COMPILE ?= /usr/arm/arm-toolchain/bin/arm-none-linux-gnueabihf-
 
 # bbox: we may have CONFIG_CROSS_COMPILER_PREFIX in .config,
 # and it has not been included yet... thus using an awkward syntax.
